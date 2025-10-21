@@ -2,43 +2,60 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
   "timezone": "America/Argentina/Cordoba",
-  // i) Semanal: PRs antes de las 08:00 AR todos los lunes
+
+  // i) Weekly: open PRs before 08:00 AR every Monday
   "schedule": ["before 8am on Monday"],
-  // Limitar ruido
+
+  // Noise control
   "prHourlyLimit": 2,
   "prConcurrentLimit": 10,
-  // Mantener lockfiles frescos
-  "lockFileMaintenance": { "enabled": true, "schedule": ["before 8am on Monday"] },
-  // Managers que usamos
+
+  // Keep lockfiles fresh
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 8am on Monday"]
+  },
+
+  // Managers we use
   "enabledManagers": ["npm", "github-actions"],
-  // Commits semánticos
+
+  // >>> Requested addition <<<
+  "npm": {
+    "ignorePaths": ["**/node_modules/**"]
+  },
+
+  // Commit style
   "semanticCommits": "enabled",
-  // Estrategia de versiones
+
+  // Version bump strategy
   "rangeStrategy": "bump",
-  // Reglas por paquete/tipo
+
+  // Package-specific policies
   "packageRules": [
     {
-      "description": "Automerge de devDependencies patch/minor",
+      "description": "Automerge devDependencies (minor/patch)",
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     },
     {
-      "description": "Agrupar React/Next y no abrir mayor automáticamente",
+      "description": "Group React/Next and hold majors",
       "matchPackageNames": ["react", "react-dom", "next"],
       "separateMajorMinor": true,
       "matchUpdateTypes": ["major"],
-      "enabled": false,             // Los mayores los vemos trimestralmente a mano
+      "enabled": false,
       "labels": ["major-hold"]
     },
     {
-      "description": "Firebase Admin y Express: revisar con más cuidado",
+      "description": "Extra care for firebase-admin and express",
       "matchPackageNames": ["firebase-admin", "express"],
-      "stabilityDays": 3,           // esperar 3 días desde release
+      "stabilityDays": 3,
       "labels": ["needs-manual-check"]
     }
   ],
-  // Etiquetas y reviewers por defecto
+
+  // Labels & reviewers
   "labels": ["dependencies"],
   "reviewers": ["tu-usuario-github"]
 }
+
