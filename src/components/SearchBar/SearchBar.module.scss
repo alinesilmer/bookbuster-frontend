@@ -1,0 +1,35 @@
+.searchBar {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: lightgray;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 1.5rem 1rem 3.5rem;
+  background: var(--bg-card);
+  border: 2px solid gray;
+  border-radius: 50px;
+  color: lightgray;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  
+  &::placeholder {
+    color: gray;
+  }
+  
+  &:focus {
+    border-color: lightgray;
+    box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1);
+  }
+}

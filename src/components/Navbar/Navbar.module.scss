@@ -1,0 +1,206 @@
+.navbar {
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  background-clip: text;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+
+}
+
+.logoImage{
+  width: 60px;
+  height: 90px;
+}
+
+.desktop {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+
+.navLink {
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  font-size: 0.9rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--bookbuster-secondary), var(--bookbuster-primary));
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    color: var(--text-primary);
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconBtn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  
+  svg {
+    font-size: 1.2rem;
+  }
+  
+  &:hover {
+    background: var(--bookbuster-primary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--danger);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginBtn {
+  padding: 0.4rem 1rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--bookbuster-primary);
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  
+  &:hover {
+    border-color: var(--bookbuster-primary);
+    color: var(--bookbuster-secondary);
+  }
+}
+
+.registerBtn {
+  font-size: 0.9rem;
+   padding: 0.4rem 1rem;
+  background: var(--bookbuster-primary);
+  color: white;
+  border-radius: 50px;
+  font-weight: 500;
+  
+  &:hover {
+     border-color: var(--bookbuster-primary);
+    color: var(--bookbuster-secondary);
+  }
+}
+
+.menuBtn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border-radius: 8px;
+  color: var(--text-primary);
+  
+  svg {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  overflow: hidden;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.mobileLink {
+  padding: 1rem 2rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
+  background: transparent;
+  text-align: left;
+  width: 100%;
+  
+  &:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
