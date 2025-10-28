@@ -1,4 +1,3 @@
-// components/Modal/Modal.tsx
 "use client";
 
 import { createPortal } from "react-dom";
@@ -16,13 +15,7 @@ type ModalProps = {
   children: ReactNode;
 };
 
-export default function Modal({
-  isOpen,
-  onClose,
-  title,
-  size = "medium",
-  children,
-}: ModalProps) {
+export default function Modal({ isOpen, onClose, title, size = "small", children }: ModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -43,20 +36,10 @@ export default function Modal({
 
   return createPortal(
     <div className={styles.overlay} aria-hidden={!isOpen} onClick={onClose}>
-      <div
-        className={`${styles.box} ${styles[size]}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label={title}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={`${styles.box} ${styles[size]}`} role="dialog" aria-modal="true" aria-label={title} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           {title ? <h3 className={styles.title}>{title}</h3> : null}
-          <button
-            className={styles.close}
-            onClick={onClose}
-            aria-label="Cerrar"
-          >
+          <button className={styles.close} onClick={onClose} aria-label="Cerrar">
             <FiX />
           </button>
         </div>

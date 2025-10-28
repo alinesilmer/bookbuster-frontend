@@ -1,0 +1,18 @@
+
+.list { display:flex; flex-wrap:wrap; gap:2rem; }
+.card { flex:1 1 300px; min-width:300px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:16px; padding:2rem; transition:transform .3s ease, box-shadow .3s ease; }
+.card:hover { transform: translateY(-5px); box-shadow:0 20px 40px var(--shadow); }
+.head { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.titleBox h3 { margin:0; font-size:1.2rem; color:var(--text-primary); }
+.email { color:var(--text-secondary); margin-top:.25rem; font-size:.95rem; }
+.meta { color:var(--text-muted); font-size:.9rem; }
+.body { display:flex; flex-direction:column; gap:.75rem; margin-top:1rem; }
+.row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.6rem .8rem; background:rgba(50,56,152,.06); border:1px solid var(--border-color); border-radius:10px; }
+.label { color:var(--text-secondary); font-size:.85rem; }
+.val { font-weight:600; }
+.badge { padding:.2rem .6rem; border:1px solid var(--border-color); border-radius:999px; font-size:.8rem; }
+.rejectBox { display:flex; flex-direction:column; gap:.35rem; margin-top:.5rem; }
+.rejectBox textarea { background:#0f1324; color:var(--text-primary); border:1px solid var(--border-color); border-radius:10px; padding:.6rem; resize:vertical; }
+.actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
+.empty { color:var(--text-muted); text-align:center; width:100%; }
+

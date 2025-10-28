@@ -4,12 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import Layout from "@/components/Layout/Layout";
 import BookCard from "@/components/BookCard/BookCard";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import Modal from "@/components/Modal/Modal";
-import Button from "@/components/Button/Button";
 import styles from "@/styles/Home.module.scss";
 import { motion } from "framer-motion";
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
-import Image from "next/image";
 import { apiBooks, apiCopiesByBook } from "@/services/api";
 import type { Book, UIBook } from "@/types/models";
 
@@ -55,7 +52,7 @@ export default function Home() {
   }, []);
 
   const genres = useMemo(() => {
-    const set = new Set<string>(["All"]);
+    const set = new Set<string>(["Todos"]);
     uiBooks.forEach((b) => set.add(b.genre));
     return Array.from(set);
   }, [uiBooks]);
@@ -66,7 +63,7 @@ export default function Home() {
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         book.author.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesGenre =
-        selectedGenre === "All" || book.genre === selectedGenre;
+        selectedGenre === "Todos" || book.genre === selectedGenre;
       return matchesSearch && matchesGenre;
     });
   }, [uiBooks, searchQuery, selectedGenre]);
@@ -124,59 +121,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <Modal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          title="Book Details"
-          size="large"
-        >
-          {selectedBook && (
-            <div className={styles.bookDetails}>
-              <div className={styles.detailsGrid}>
-                <Image
-                  src={selectedBook.cover || "/placeholder.svg"}
-                  alt={selectedBook.title}
-                  className={styles.detailsCover}
-                  width={240}
-                  height={340}
-                />
-                <div className={styles.detailsInfo}>
-                  <h2>{selectedBook.title}</h2>
-                  <p className={styles.author}>by {selectedBook.author}</p>
-                  <div className={styles.badge}>{selectedBook.genre}</div>
-
-                  <div className={styles.availability}>
-                    <h3>Availability</h3>
-                    <p>
-                      {selectedBook.availableCopies} of{" "}
-                      {selectedBook.totalCopies} copies available
-                    </p>
-                  </div>
-
-                  <div className={styles.description}>
-                    <h3>Description</h3>
-                    <p>{selectedBook.description ?? "Sin descripción"}</p>
-                  </div>
-
-                  <div className={styles.actions}>
-                    <Button
-                      variant="primary"
-                      fullWidth
-                      disabled={selectedBook.availableCopies === 0}
-                    >
-                      {selectedBook.availableCopies > 0
-                        ? "Borrow Book"
-                        : "Out of Stock"}
-                    </Button>
-                    <Button variant="outline" fullWidth>
-                      Add to Wishlist
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </Modal>
+      
       </div>
     </Layout>
   );

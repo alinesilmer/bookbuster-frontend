@@ -64,12 +64,9 @@ export default function Navbar() {
             </Link>
             {loggedIn && (
               <>
-                <Link href="/dashboard" className={styles.navLink}>
-                  Mis Libros
-                </Link>
                 {isAdmin && (
                   <Link href="/admin" className={styles.navLink}>
-                    Admin
+                    Mi Panel
                   </Link>
                 )}
               </>
@@ -79,13 +76,6 @@ export default function Navbar() {
           <div className={styles.actions}>
             {loggedIn ? (
               <>
-                <Link
-                  href="/dashboard"
-                  className={styles.iconBtn}
-                  aria-label="Mi panel"
-                >
-                  <FiUser />
-                </Link>
                 <button
                   className={styles.iconBtn}
                   onClick={handleLogout}

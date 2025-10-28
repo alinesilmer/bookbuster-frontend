@@ -1,0 +1,10 @@
+.wrap { display:flex; flex-direction:column; gap:1rem; }
+.info { display:flex; flex-direction:column; gap:.2rem; }
+.bookTitle { font-weight:700; color:var(--text-primary); }
+.bookAuthor { color:var(--text-secondary); font-size:.9rem; }
+.form { display:flex; flex-direction:column; gap:.75rem; }
+.row { display:flex; flex-direction:column; gap:.35rem; }
+.row > span { font-weight:600; color:var(--text-secondary); }
+.row input, .row select { background:var(--bg-card); border:1px solid var(--border-color); border-radius:10px; padding:.6rem .75rem; color:var(--text-primary); }
+.actions { display:flex; gap:.75rem; justify-content:flex-end; margin-top:.5rem; }
+@media (max-width:560px){ .form { grid-template-columns:1fr; } }

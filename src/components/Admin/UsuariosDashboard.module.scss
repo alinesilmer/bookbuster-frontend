@@ -1,0 +1,46 @@
+.wrapper { background: var(--bg-card); border:1px solid var(--border-color); border-radius:16px; padding:2rem; }
+.header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; }
+.header h2 { font-size:1.5rem; color:var(--text-primary); }
+
+.tableBox { overflow-x:auto; }
+.tableBox table { width:100%; border-collapse:collapse; table-layout: fixed; }
+.tableBox thead { background: var(--bg-darker); }
+.tableBox th { padding:1.0rem; text-align:left; font-weight:600; color:var(--text-secondary); font-size:.9rem; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border-color); }
+.tableBox tbody tr { border-top:1px solid var(--border-color); transition: background .3s ease; }
+.tableBox tbody tr:hover { background: rgba(255,255,255,.03); }
+.tableBox td { padding:1.0rem; color:var(--text-primary); font-size:.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.thAcciones { width: 320px; }
+
+.actions {
+  display:flex; gap:.5rem; align-items:center; flex-wrap:nowrap;
+}
+.actions > :global(button) {
+  white-space:nowrap; padding-inline:.6rem;
+}
+.compactBtn {
+  padding: .35rem .6rem !important;
+  font-size: .85rem !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  flex: 0 0 auto;
+}
+
+.hideSm {
+  display: inline;
+}
+
+.badge { padding:.35rem .7rem; border-radius:50px; font-size:.8rem; font-weight:600; text-transform:capitalize; display:inline-block; }
+.active { background:rgba(46,213,115,.2); color:var(--success); }
+.suspended { background:rgba(255,71,87,.2); color:var(--danger); }
+
+.empty { text-align:center; color:var(--text-muted); }
+
+@media (max-width: 900px) {
+  .thAcciones { width: 220px; }
+  .hideSm { display: none; }
+  .compactBtn { padding:.35rem; }
+}

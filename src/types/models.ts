@@ -1,7 +1,9 @@
+import { Timestamp } from "next/dist/server/lib/cache-handlers/types"
+
 export type Role = "ADMIN" | "BIBLIOTECARIO" | "SOCIO"
 export type EstadoSolicitud = "PENDIENTE" | "APROBADA" | "RECHAZADA"
 export type EstadoCopia = "DISPONIBLE" | "PRESTADO"
-export type FormatoCopia = "PDF" | "EPUB" | "AUDIOBOOK"
+export type FormatoCopia = "PDF" | "EPUB" | "AUDIOBOOK" | "FISICO"
 export type EstadoPrestamo = "ACTIVO" | "DEVUELTO" | "VENCIDO" | "CANCELADO"
 export type EstadoMulta = "PENDIENTE" | "PAGADA" | "ANULADA"
 
@@ -12,6 +14,7 @@ export type User = {
   rol: Role
   activo?: boolean
   creado_en?: string
+  nro_socio?: number | null
 }
 
 export type AuthResponse = {
@@ -58,8 +61,6 @@ export type Penalty = {
 
 export type Loan = {
   id: string
-  bookTitle: string
-  bookCover?: string | null
   loanDate: string
   dueDate: string
   status: "active" | "late" | "returned"
@@ -86,6 +87,7 @@ export type SocioUser = {
   activo: boolean
   prestamos_activos: number
   multas_pendientes: number
+  nro_socio: number | null
 }
 
 export type RegisterRequest = {
@@ -96,3 +98,17 @@ export type RegisterRequest = {
   fecha: string
   estado: EstadoSolicitud
 }
+
+export type Notificaciones ={
+  notificacion_id: number;
+  destinatario_usuario_id: number;
+  tipo: string;
+  mensaje: string;
+  leida: boolean;
+  creada_en: Timestamp;
+}
+
+//ANOTACIONES Y CAMBIOS RESPECTO A DER
+//el campo dni para socios no se consideró necesario, en tanto se tiene nr de socio, por lo cual pasó a ser un campo opcional
+//lo mismo sucede, por consiguiente, en la solicitud de registro, donde no se requiere dni, y también se quitó observación
+//url_archivo de copia también se descartó, pues era para replicar la posibilidad de una biblioteca virtual

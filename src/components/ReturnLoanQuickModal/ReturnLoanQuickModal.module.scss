@@ -1,0 +1,17 @@
+.body { display:flex; flex-direction:column; gap:.9rem; }
+.section { display:flex; flex-direction:column; gap:.4rem; }
+.sectionRow { display:flex; gap:.75rem; align-items:flex-end; }
+.col { flex:1 1 0; display:flex; flex-direction:column; gap:.35rem; }
+
+.label { font-weight:600; color:var(--text-secondary); }
+.value { color:var(--text-primary); }
+.hint { color:var(--text-muted); }
+.empty { color:var(--danger); }
+
+.input, .select, .textarea {
+  width:100%; padding:.55rem .7rem; border:1px solid var(--border-color);
+  border-radius:10px; background:var(--bg-card); color:var(--text-primary); outline:none;
+}
+.checkbox { display:flex; gap:.5rem; align-items:center; color:var(--text-primary); }
+
+.actions { display:flex; gap:.6rem; justify-content:flex-end; }
